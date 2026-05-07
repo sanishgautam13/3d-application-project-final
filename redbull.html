@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Red Bull Can - The Assignment Survival Kit</title>
+
+    <!-- Google Fonts - Open Sans for body text, Oswald for headings -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap and Font Awesome -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="https://kit.fontawesome.com/6ac3910c4e.js" crossorigin="anonymous"></script>
+
+    <!-- my own stylesheets -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_button.css">
+</head>
+<body>
+
+    <!-- NAVBAR - same on every page, "3D Models" dropdown is highlighted here -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+            <span class="brand-accent">SURVIVAL</span><span class="brand-bull">KIT</span>
+            <span class="brand-sub">The Assignment Edition</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">3D Models</a>
+                    <ul class="dropdown-menu">
+                        <!-- this page is highlighted as active in the dropdown -->
+                        <li><a class="dropdown-item active" href="redbull.html">Red Bull Can</a></li>
+                        <li><a class="dropdown-item" href="room.html">Room</a></li>
+                        <li><a class="dropdown-item" href="macbook.html">MacBook</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <!-- MAIN MODEL PAGE - left column is the 3D viewport, right column is the controls panel -->
+    <main class="model-page">
+        <div class="container-fluid">
+            <div class="row">
+
+                <!-- 3D viewport - Three.js renders into this div -->
+                <div class="col-lg-8 p-0">
+                    <div id="threeContainer" class="three-viewport"></div>
+                </div>
+
+                <!-- controls panel - title/description load dynamically from data_loader.js (PHP/SQLite or JSON) -->
+                <div class="col-lg-4 controls-panel">
+                    <h2 class="model-title" data-content="model-title">Loading...</h2>
+                    <p class="model-description" data-content="model-description">Loading...</p>
+                    <div class="info-box">
+                        <h4><i class="fas fa-info-circle"></i> About this model</h4>
+                        <p data-content="model-technical">Loading...</p>
+                    </div>
+
+                    <!-- Animation controls - spin, open, crush, reset -->
+                    <div class="controls-group">
+                        <h4><i class="fas fa-play-circle"></i> Animation</h4>
+                        <div class="btn-grid">
+                            <button id="toggleRotate" class="btn-3d"><i class="fas fa-sync-alt"></i> Spin</button>
+                            <button id="openCan" class="btn-3d"><i class="fas fa-door-open"></i> Open Can</button>
+                            <button id="switchModel" class="btn-3d"><i class="fas fa-compress-alt"></i> Crush Can</button>
+                            <button id="resetModel" class="btn-3d"><i class="fas fa-undo"></i> Reset</button>
+                        </div>
+                    </div>
+
+                    <!-- View controls - wireframe toggle plus four camera angles -->
+                    <div class="controls-group">
+                        <h4><i class="fas fa-eye"></i> View</h4>
+                        <div class="btn-grid">
+                            <button id="toggleWireframe" class="btn-3d btn-view"><i class="fas fa-border-all"></i> Wireframe</button>
+                            <button id="cameraHero" class="btn-3d btn-view"><i class="fas fa-video"></i> Hero View</button>
+                            <button id="cameraFront" class="btn-3d btn-view"><i class="fas fa-video"></i> Front</button>
+                            <button id="cameraTop" class="btn-3d btn-view"><i class="fas fa-video"></i> Top</button>
+                            <button id="cameraSide" class="btn-3d btn-view"><i class="fas fa-video"></i> Side</button>
+                        </div>
+                    </div>
+
+                    <!-- Lighting controls - toggle the studio spotlight and ambient hemi light on/off -->
+                    <div class="controls-group">
+                        <h4><i class="fas fa-lightbulb"></i> Lighting</h4>
+                        <div class="btn-grid">
+                            <button id="toggleSpotLight" class="btn-3d btn-light"><i class="fas fa-sun"></i> Studio</button>
+                            <button id="toggleAmbient" class="btn-3d btn-light"><i class="fas fa-adjust"></i> Ambient</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6"><p class="footer-brand"><span class="brand-accent">SURVIVAL</span><span class="brand-bull">KIT</span></p></div>
+            <div class="col-md-6 text-md-end"><p class="footer-text">University of Sussex &copy; 2026</p></div>
+        </div>
+    </div>
+    </footer>
+
+    <!-- SCRIPTS - load order matters, jQuery and Three.js have to come before my scripts that use them -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <!-- my own scripts - data_loader handles AJAX, redbull_script handles the 3D scene -->
+    <script src="data_loader.js"></script>
+    <script src="redbull_script.js"></script>
+</body>
+</html>

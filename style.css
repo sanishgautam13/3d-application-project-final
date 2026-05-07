@@ -1,0 +1,622 @@
+/* THE ASSIGNMENT SURVIVAL KIT - Main Stylesheet */
+
+/* root variables - all the site colours in one place so I can re-skin everything by changing values here */
+:root {
+    --bg-dark: #0f1419;
+    --bg-card: #1a2128;
+    --bg-panel: #161c22;
+    --accent-sage: #94c5a4;
+    --accent-sage-soft: #b8d4c2;
+    --accent-slate: #3d4f5c;
+    --accent-warm: #d4b896;
+    --text-light: #e8e6e1;
+    --text-muted: #8b9098;
+    --border-color: rgba(255,255,255,0.06);
+}
+
+/* universal reset - kill default margins/padding so everything starts from zero */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* base body styles - dark background and Open Sans for everything that isn't a heading */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* all headings use Oswald and uppercase letters for that bold condensed look */
+h1, h2, h3, h4, h5 {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* NAVBAR */
+/* fixed at the top with a slight see-through dark background and blur for that frosted glass feel */
+.navbar {
+    background: rgba(15, 20, 25, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.8rem 1.5rem;
+    z-index: 1000;
+}
+
+.navbar-brand {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* the two-tone SURVIVAL/KIT logo colours */
+.brand-accent {
+    color: var(--accent-sage);
+}
+
+.brand-bull {
+    color: var(--text-light);
+}
+
+/* keep .brand-red as an alias so older pages still work */
+.brand-red {
+    color: var(--accent-sage);
+}
+
+/* the small "The Assignment Edition" strapline below the logo */
+.brand-sub {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    display: block;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: -4px;
+}
+
+.nav-link {
+    color: var(--text-light) !important;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+/* sage colour on hover and when the link is active so you can see where you are */
+.nav-link:hover,
+.nav-link.active {
+    color: var(--accent-sage) !important;
+}
+
+.dropdown-menu {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+}
+
+.dropdown-item {
+    color: var(--text-light);
+    font-family: 'Open Sans', sans-serif;
+}
+
+.dropdown-item:hover,
+.dropdown-item.active {
+    background: var(--accent-slate);
+    color: var(--accent-sage);
+}
+
+/* HERO SECTION (index.html) */
+/* big top section on the home page with the title and intro text */
+/* the Red Bull image sits behind, blended dark so the text stays readable */
+.hero-section {
+    position: relative;
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(15, 20, 25, 0.85) 0%,
+            rgba(15, 20, 25, 0.95) 60%,
+            var(--bg-dark) 100%
+        ),
+        url('assets/images/home-page-redbull.png') center/cover no-repeat;
+    padding: 200px 0 100px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* keep the hero text on top of the background image */
+.hero-text {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+/* the smaller "The Assignment" line above the main title */
+.title-line-1 {
+    display: block;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    color: var(--text-muted);
+    letter-spacing: 3px;
+    font-weight: 400;
+}
+
+/* the big "Survival Kit" line - clamp() means it scales smoothly with screen size */
+.title-line-2 {
+    display: block;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    color: var(--accent-sage);
+    letter-spacing: 2px;
+}
+
+.hero-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* PRODUCT CARDS SECTION */
+/* the three model cards on the home page */
+.products-section {
+    padding: 60px 0 80px 0;
+    background: var(--bg-dark);
+}
+
+.section-title {
+    font-size: 2rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+}
+
+.section-subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.card-link {
+    text-decoration: none;
+}
+
+.product-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: all 0.4s ease;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* lifts up slightly with a sage glow when you hover over a card */
+.product-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-sage);
+    box-shadow: 0 12px 30px rgba(148, 197, 164, 0.12);
+}
+
+/* image instead of icon - the box that holds each card's preview image */
+.card-image {
+    width: 100%;
+    height: 180px;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+    background: radial-gradient(ellipse at center, #1c2530 0%, #0f1419 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+}
+
+/* slight zoom on the image when you hover the card */
+.product-card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+.product-card h3 {
+    font-family: 'Oswald', sans-serif;
+    color: var(--text-light);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.product-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* the "View 3D →" call-to-action at the bottom of each card */
+.card-cta {
+    display: inline-block;
+    margin-top: 1.2rem;
+    color: var(--accent-sage);
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.85rem;
+    transition: transform 0.3s;
+}
+
+/* arrow nudges right on hover - small detail but feels nice */
+.product-card:hover .card-cta {
+    transform: translateX(5px);
+}
+
+/* 3D MODEL PAGE */
+/* the main wrapper for redbull.html, room.html and macbook.html */
+.model-page {
+    padding-top: 70px;
+    min-height: 100vh;
+}
+
+/* the big area where Three.js renders the 3D model - takes up most of the page */
+.three-viewport {
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: radial-gradient(ellipse at center, #1c2530 0%, #0f1419 100%);
+    position: relative;
+}
+
+.three-viewport canvas {
+    display: block;
+}
+
+#gui-container {
+    position: absolute;
+    top: 80px;
+    left: 10px;
+    z-index: 100;
+}
+
+/* the controls panel on the right side of each model page */
+.controls-panel {
+    background: var(--bg-panel);
+    height: calc(100vh - 70px);
+    overflow-y: auto;
+    padding: 2rem 1.5rem;
+    border-left: 1px solid var(--border-color);
+}
+
+.model-title {
+    font-size: 2rem;
+    color: var(--accent-sage);
+    margin-bottom: 0.5rem;
+}
+
+.model-description {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* the "About this model" info card on each model page */
+.info-box {
+    background: rgba(61, 79, 92, 0.25);
+    border: 1px solid rgba(61, 79, 92, 0.4);
+    border-radius: 8px;
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-box h4 {
+    font-size: 0.9rem;
+    color: var(--accent-sage-soft);
+    margin-bottom: 0.5rem;
+    text-transform: none;
+}
+
+.info-box p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* each control section (Animation, View, Lighting, etc) is a controls-group */
+.controls-group {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.controls-group h4 {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* two-column button grid inside each controls group */
+.btn-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+/* FOOTER */
+.site-footer {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 0;
+}
+
+.footer-brand {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+}
+
+.footer-text {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.footer-text a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-text a:hover {
+    color: var(--accent-sage);
+}
+
+/* RESPONSIVE */
+/* below 992px (tablets and down) - stack the layout vertically and shrink things */
+@media (max-width: 991px) {
+    .hero-section {
+        padding: 160px 0 60px 0;
+    }
+
+    /* viewport drops to half height so the controls panel fits below it */
+    .three-viewport {
+        height: 50vh;
+    }
+
+    /* controls panel goes underneath the viewport instead of beside it */
+    .controls-panel {
+        height: auto;
+        border-left: none;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .card-image {
+        height: 160px;
+    }
+}
+
+/* below 575px (phones) - one column for buttons and smaller titles */
+@media (max-width: 575px) {
+    .btn-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    .card-image {
+        height: 200px;
+    }
+}
+
+/* ABOUT PAGE STYLES */
+.about-page {
+    padding-top: 120px;
+    padding-bottom: 80px;
+    min-height: 100vh;
+}
+
+/* big intro section at the top of the about page */
+.about-hero {
+    text-align: center;
+    padding: 40px 0 60px 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 40px;
+}
+
+.about-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--accent-sage);
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.about-lead {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* each section on the about page is separated by a thin divider line */
+.about-section {
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* don't show a divider after the last section - looks neater */
+.about-section:last-of-type {
+    border-bottom: none;
+}
+
+/* section headings - flex layout so the icon sits next to the heading text */
+.about-section h2 {
+    font-size: 1.6rem;
+    color: var(--accent-sage);
+    margin-bottom: 1.2rem;
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.about-section h2 i {
+    font-size: 1.3rem;
+    color: var(--accent-sage-soft);
+}
+
+.about-section h3 {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.about-section p {
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+/* important bits in bold get the lighter colour to stand out */
+.about-section p strong,
+.about-section li strong {
+    color: var(--text-light);
+}
+
+/* inline code snippets get a sage tint and rounded background */
+.about-section p code,
+.about-section li code {
+    background: rgba(148, 197, 164, 0.1);
+    color: var(--accent-sage-soft);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-family: monospace;
+}
+
+/* dashed underline on links so they're clearly clickable but not aggressive */
+.about-section a {
+    color: var(--accent-sage);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--accent-sage);
+    transition: color 0.3s;
+}
+
+.about-section a:hover {
+    color: var(--accent-sage-soft);
+}
+
+/* the styled bullet lists used throughout the about page */
+.tech-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.tech-list li {
+    color: var(--text-muted);
+    padding: 8px 0 8px 24px;
+    line-height: 1.6;
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+/* custom chevron bullet point in the sage colour */
+.tech-list li::before {
+    content: "›";
+    position: absolute;
+    left: 4px;
+    color: var(--accent-sage);
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.tech-list li:last-child {
+    border-bottom: none;
+}
+
+/* Testing screenshots */
+.testing-img {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    transition: transform 0.4s ease;
+    cursor: pointer;
+}
+
+/* clicking a screenshot makes it pop out 1.5x bigger */
+.testing-img.clicked {
+    transform: scale(1.5);
+    z-index: 100;
+    position: relative;
+}
+
+.img-caption {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+
+/* if a tech-list item starts with an icon, hide the default chevron so we don't get both */
+.tech-list li:has(> i:first-child)::before {
+    content: none;
+}
+
+/* tighter left padding when icons are inline since we don't need room for the chevron */
+.tech-list li:has(> i:first-child) {
+    padding-left: 8px;
+}
+
+/* the inline Font Awesome icons on the bullet points */
+.tech-list li > i:first-child {
+    color: var(--accent-sage);
+    width: 22px;
+    text-align: center;
+    margin-right: 10px;
+    font-size: 0.95em;
+}
+
+/* swatch icons in the colour palette section have their own colour set inline, leave it alone */
+.tech-list li > i[style*="color"] {
+    color: inherit !important;
+    font-size: 1.1em;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    padding: 1px;
+}
+
+/* code blocks inside the about page - keep them readable */
+.about-section pre {
+    margin: 1rem 0;
+    line-height: 1.5;
+}
+
+.about-section pre code {
+    background: transparent;
+    padding: 0;
+    color: inherit;
+    font-size: 0.85rem;
+}

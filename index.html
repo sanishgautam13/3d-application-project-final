@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>The Assignment Survival Kit</title>
+
+    <!-- Google Fonts - Open Sans for body text, Oswald for headings -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap 5 for the responsive grid and navbar -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <!-- Font Awesome for the icons used throughout the site -->
+    <script src="https://kit.fontawesome.com/6ac3910c4e.js" crossorigin="anonymous"></script>
+
+    <!-- my own stylesheets - main styles and button styles split into two files -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_button.css">
+</head>
+<body>
+
+    <!-- NAVBAR - fixed at the top of every page -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <!-- two-tone logo with the strapline underneath -->
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-accent">SURVIVAL</span><span class="brand-bull">KIT</span>
+                <span class="brand-sub">The Assignment Edition</span>
+            </a>
+
+            <!-- hamburger button that shows up on mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- the actual nav links - collapse into the hamburger menu on mobile -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <!-- dropdown menu for the three model pages -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            3D Models
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="redbull.html">Red Bull Can</a></li>
+                            <li><a class="dropdown-item" href="room.html">Room</a></li>
+                            <li><a class="dropdown-item" href="macbook.html">MacBook</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION - big intro at the top of the home page -->
+    <header class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 hero-text">
+                    <!-- title is split into two lines so I can style them differently -->
+                    <h1 class="hero-title">
+                        <span class="title-line-1">The Assignment</span>
+                        <span class="title-line-2">Survival Kit</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        These are the three things that get me through every deadline. Redbull for energy, a Room for a quiet space, and the laptop that does all the work. Explore each one in 3D below.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- PRODUCT CARDS - the three clickable model cards -->
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title text-center">My Survival Kit</h2>
+            <p class="section-subtitle text-center">Click any item to explore it in full 3D</p>
+
+            <!-- Bootstrap row with three columns - col-md-4 means 3-up on desktop, stacks on mobile -->
+            <div class="row g-4 mt-4">
+
+                <!-- Red Bull card -->
+                <div class="col-md-4">
+                    <a href="redbull.html" class="card-link">
+                        <div class="product-card">
+                            <div class="card-image">
+                                <img src="assets/images/redbull-card.png" alt="Red Bull energy drink 3D model">
+                            </div>
+                            <h3>RedBull</h3>
+                            <p>A 250ml Red Bull: the difference between finishing a chapter at 2am or giving up.</p>
+                            <span class="card-cta">View 3D <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Room card -->
+                <div class="col-md-4">
+                    <a href="room.html" class="card-link">
+                        <div class="product-card">
+                            <div class="card-image">
+                                <img src="assets/images/room-card.png" alt="L-shaped study room 3D model">
+                            </div>
+                            <h3>The Space</h3>
+                            <p>The room where it all happens. Desk, bed, window, lamp. Toggle the lamp on for those late night sessions.</p>
+                            <span class="card-cta">View 3D <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- MacBook card -->
+                <div class="col-md-4">
+                    <a href="macbook.html" class="card-link">
+                        <div class="product-card">
+                            <div class="card-image">
+                                <img src="assets/images/macbook-card.png" alt="MacBook 3D model with screen on">
+                            </div>
+                            <h3>The Tool</h3>
+                            <p>The MacBook itself. Open the lid, watch it boot, and see the screen come to life.</p>
+                            <span class="card-cta">View 3D <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER - same layout on every page -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="footer-brand"><span class="brand-accent">SURVIVAL</span><span class="brand-bull">KIT</span></p>
+                    <p class="footer-text">Web 3D project for the Introduction to Web 3D Applications module.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="footer-text">University of Sussex &copy; 2026</p>
+                    <p class="footer-text">
+                        <a href="about.html">About</a> |
+                        <a href="https://github.com" target="_blank">GitHub</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS at the bottom so the page renders before scripts load -->
+    <script src="js/bootstrap.bundle.js"></script>
+</body>
+</html>

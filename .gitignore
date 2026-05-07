@@ -1,0 +1,24 @@
+# macOS metadata files
+.DS_Store
+**/.DS_Store
+
+# SQLite database (marker will run setup_database.php to create their own)
+database/models.db
+
+# Editor files
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Local video files - hosted on Panopto
+assets/videos/
+*.mp4
+*.mov
+
+# Local video files - hosted on Panopto
+assets/videos/
+*.mp4
+*.mov

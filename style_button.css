@@ -1,0 +1,84 @@
+/* CUSTOM BUTTON STYLES */
+
+.btn-3d {
+    background: rgba(255, 255, 255, 0.04);
+    color: #d8d6d1;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.btn-3d:hover {
+    background: rgba(148, 197, 164, 0.12);
+    border-color: rgba(148, 197, 164, 0.5);
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.btn-3d:active {
+    transform: translateY(0px);
+    background: rgba(148, 197, 164, 0.2);
+}
+
+.btn-3d.active {
+    background: rgba(148, 197, 164, 0.18);
+    border-color: var(--accent-sage);
+    color: var(--accent-sage);
+}
+
+.btn-3d i {
+    font-size: 0.85rem;
+}
+
+/* Sound buttons */
+.btn-sound {
+    background: rgba(61, 79, 92, 0.2);
+    border-color: rgba(61, 79, 92, 0.4);
+}
+
+.btn-sound:hover {
+    background: rgba(61, 79, 92, 0.4);
+    border-color: rgba(61, 79, 92, 0.6);
+}
+
+/* View buttons */
+.btn-view {
+    background: rgba(100, 110, 120, 0.08);
+    border-color: rgba(100, 110, 120, 0.18);
+}
+
+.btn-view:hover {
+    background: rgba(184, 212, 194, 0.12);
+    border-color: rgba(184, 212, 194, 0.4);
+}
+
+/* Light buttons */
+.btn-light {
+    background: rgba(212, 184, 150, 0.08);
+    border-color: rgba(212, 184, 150, 0.2);
+}
+
+.btn-light:hover {
+    background: rgba(212, 184, 150, 0.18);
+    border-color: rgba(212, 184, 150, 0.5);
+}
+
+/* Image pop-out effect for About page */
+img {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+img.clicked {
+    transform: scale(1.5);
+}

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>About - The Assignment Survival Kit</title>
+
+    <!-- Google Fonts and stylesheets -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="https://kit.fontawesome.com/6ac3910c4e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_button.css">
+</head>
+<body>
+
+    <!-- NAVBAR - About is the active page -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-accent">SURVIVAL</span><span class="brand-bull">KIT</span>
+                <span class="brand-sub">The Assignment Edition</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">3D Models</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="redbull.html">Red Bull Can</a></li>
+                            <li><a class="dropdown-item" href="room.html">Room</a></li>
+                            <li><a class="dropdown-item" href="macbook.html">MacBook</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="about-page">
+        <div class="container">
+
+            <!-- page hero / intro -->
+            <header class="about-hero">
+                <h1 class="about-title">About the Project</h1>
+                <p class="about-lead">A behind-the-scenes look at <span class="brand-accent">The Assignment Survival Kit.</span> How I built it, the tools I used, and why I made the decisions I did.</p>
+            </header>
+
+            <!-- CONCEPT -->
+            <section class="about-section">
+                <h2><i class="fas fa-lightbulb"></i> The Concept</h2>
+                <p>This is the project I built for the University of Sussex Introduction to Web 3D Applications module.</p>
+                <p>I built three models that represent the three things that always show up when I&rsquo;m trying to finish coursework: a Red Bull, my room, and my MacBook. The brief required at least three original 3D models and explicitly excluded the Coca-Cola brand designed in the labs, so I picked a theme I could relate to and built around it.</p>
+                <p>The site is a multi-page Bootstrap 5 application with a Three.js viewer on every model page, an MVC backend (PHP + SQLite, with a JSON fallback), AJAX content loading, animations, audio, sophisticated lighting, and material state changes triggered through JavaScript.</p>
+            </section>
+
+            <!-- SITEMAP -->
+            <section class="about-section">
+                <h2><i class="fas fa-sitemap"></i> Site Map</h2>
+                <p>The site is structured around five public-facing pages plus a backend layer. Here is how they connect:</p>
+                <ul class="tech-list">
+                    <li><i class="fas fa-home"></i> <strong>index.html</strong> &mdash; Home page. Hero section, three product cards linking to each model page.</li>
+                    <li><i class="fas fa-bolt"></i> <strong>redbull.html</strong> &mdash; Red Bull 250ml model page with controls.</li>
+                    <li><i class="fas fa-bed"></i> <strong>room.html</strong> &mdash; L-shaped study room model page with lamp toggle.</li>
+                    <li><i class="fas fa-laptop"></i> <strong>macbook.html</strong> &mdash; MacBook model page with multi-stage open animation.</li>
+                    <li><i class="fas fa-info-circle"></i> <strong>about.html</strong> &mdash; This page.</li>
+                </ul>
+                <p>Behind those, the backend layer:</p>
+                <ul class="tech-list">
+                    <li><i class="fab fa-php"></i> <strong>index.php</strong> &mdash; MVC framework entry point (Lab 7 pattern).</li>
+                    <li><i class="fas fa-database"></i> <strong>setup_database.php</strong> &mdash; one-time script that builds the SQLite database from <code>data.json</code>.</li>
+                    <li><i class="fas fa-server"></i> <strong>api/get_models.php</strong> &mdash; the AJAX endpoint that returns model data drawn from SQLite.</li>
+                    <li><i class="fas fa-cube"></i> <strong>application/model/model.php</strong> &mdash; PDO-based data-access class.</li>
+                    <li><i class="fas fa-cogs"></i> <strong>application/controller/controller.php</strong> &mdash; coordinates between the model and the view.</li>
+                </ul>
+            </section>
+
+            <!-- THE 3D MODELS -->
+            <section class="about-section">
+                <h2><i class="fas fa-cube"></i> The 3D Models</h2>
+                <p>All three models were authored in <strong>Blender</strong> and exported as glTF Binary (<code>.glb</code>) files. Three.js loads them via <code>GLTFLoader</code>. Every export used identical settings: glTF Binary format, +Y Up transform, modifiers applied on export, UVs and normals included, and materials embedded.</p>
+
+                <h3><i class="fas fa-bolt"></i> Red Bull 250ml Can</h3>
+                <p>The Red Bull is the most photoreal of the three models. It was built in <strong>Cycles</strong> at 1920&times;1080 / 30 fps and consists of <strong>10 separate mesh objects totalling 4,056 polygons</strong>. The body itself is a 320-polygon cylinder modelled to real-world dimensions of <strong>53mm &times; 53mm &times; 134.5mm,</strong> the exact proportions of an actual 250ml slim can.</p>
+
+                <p>The can&rsquo;s anatomy is fully modelled:</p>
+                <ul class="tech-list">
+                    <li><i class="fas fa-circle"></i> <strong>CanBody</strong> &mdash; 258 verts, 320 polys. Holds three material slots (label wrap, upper aluminium taper, lower aluminium taper).</li>
+                    <li><i class="fas fa-circle"></i> <strong>BottomDome &amp; BottomRim</strong> &mdash; 1,344 polys combined. The concave recess and standing ring at the base, both built from torus and disc primitives.</li>
+                    <li><i class="fas fa-circle"></i> <strong>TopLid &amp; TopRim</strong> &mdash; 1,344 polys combined. The flat aluminium cap with the necked rim at the very top.</li>
+                    <li><i class="fas fa-circle"></i> <strong>DrinkingHole / DrinkingHoleOpen</strong> &mdash; two states of the punch-out, swapped during the open animation.</li>
+                    <li><i class="fas fa-circle"></i> <strong>DrinkingHoleScore</strong> &mdash; 600 polys for the embossed tear line around the hole.</li>
+                    <li><i class="fas fa-circle"></i> <strong>PullTab</strong> &mdash; 128 polys, rotated 65&deg; on the X axis to sit naturally pulled-up.</li>
+                    <li><i class="fas fa-circle"></i> <strong>Rivet</strong> &mdash; 240-poly dome connecting the tab to the lid.</li>
+                </ul>
+
+                <p><strong>Materials</strong> &mdash; seven Principled BSDF shaders, all carefully tuned:</p>
+                <ul class="tech-list">
+                    <li><i class="fas fa-paint-brush"></i> <strong>MAT_Body_Label</strong> &mdash; the printed label, a UV-mapped image texture (<code>redbull_can_lable.png</code>) over a semi-metallic finish (Metallic 0.8, Roughness 0.3).</li>
+                    <li><i class="fas fa-paint-brush"></i> <strong>MAT_Aluminium_Lid</strong> &mdash; near-fully metallic (Metallic 0.9), very low roughness (0.15) for that polished aluminium look.</li>
+                    <li><i class="fas fa-paint-brush"></i> <strong>MAT_Aluminium_Base</strong> &mdash; fully metallic, slightly rougher (0.4) for the matte brushed feel of the bottom.</li>
+                    <li><i class="fas fa-paint-brush"></i> <strong>MAT_Aluminium_Tab</strong> &mdash; polished metal for the rivet and score line (Specular 1.0).</li>
+                    <li><i class="fas fa-paint-brush"></i> <strong>MAT_Tab_Blue</strong> &mdash; Red Bull&rsquo;s brand blue (RGB 0.01, 0.07, 0.52), semi-metallic finish.</li>
+                    <li><i class="fas fa-paint-brush"></i> <strong>MAT_DrinkingHole</strong> &mdash; non-metallic, slightly transparent (Alpha 0.82) to suggest the thin sealed material.</li>
+                    <li><i class="fas fa-paint-brush"></i> <strong>MAT_DrinkingHoleOpen</strong> &mdash; very dark and rough, simulating the dark interior visible through the opening.</li>
+                </ul>
+
+                <p><strong>Lighting</strong> &mdash; a proper three-point area-light rig:</p>
+                <ul class="tech-list">
+                    <li><i class="fas fa-sun"></i> <strong>KeyLight</strong> &mdash; 80W warm white area light (120&times;120mm), front-right and high. The primary illumination.</li>
+                    <li><i class="fas fa-adjust"></i> <strong>FillLight</strong> &mdash; 30W cool-tinted area light (180&times;180mm), front-left at mid-height. Lifts the shadow side.</li>
+                    <li><i class="fas fa-moon"></i> <strong>RimLight</strong> &mdash; 50W near-white area light (80&times;80mm), behind the can. Gives the silhouette separation against the background.</li>
+                </ul>
+
+                <p><strong>Camera</strong> &mdash; a 75mm telephoto on a full-frame sensor, positioned (120, &minus;280, 110)mm. The 75mm focal length minimises perspective distortion, which is standard practice for product photography.</p>
+
+                <p><strong>Crushed variant</strong> &mdash; <code>redbull_can_crushed.blend</code> is a separate file built by joining all 10 original mesh objects into a single <strong>4,952-polygon mesh</strong>, applying a Z-scale of 0.5509 (compressing to ~55% of the original height), then sculpting irregular dents into it. The slight rotation (~10&deg; X, ~5&deg; Y) makes the crush look naturally off-balance rather than perfectly flat. The Three.js front-end loads this <code>.glb</code> on demand when the user clicks <strong>Crush Can</strong>.</p>
+
+                <h3><i class="fas fa-bed"></i> L-Shaped Study Room</h3>
+                <p>The room is a complete <strong>low-poly isometric scene</strong>, stylised in a flat aesthetic similar to the minimalist 3D renders you see on Dribbble or Pinterest. It was built in <strong>EEVEE</strong> at 1920&times;1080 / 24 fps and contains <strong>54 objects, 50 of which are meshes</strong>, organised across 51 named materials.</p>
+
+                <p><strong>Style decisions:</strong></p>
+                <ul class="tech-list">
+                    <li><i class="fas fa-cube"></i> The vast majority of objects are simple cubes (8 verts, 6 polys each) &mdash; a deliberate low-poly aesthetic that runs efficiently in WebGL.</li>
+                    <li><i class="fas fa-paint-brush"></i> Every material is flat colour Principled BSDF: <strong>Metallic 0.0, Roughness 0.5, Alpha 1.0</strong>. No image textures, no PBR detail. Colour is used purely for differentiation.</li>
+                    <li><i class="fas fa-cut"></i> The left wall has 16 vertices instead of 8 because a window opening was cut into it, which is the only piece of non-trivial topology in the entire room.</li>
+                    <li><i class="fas fa-circle"></i> Two exceptions to the all-cube rule: the lampshade (32-sided cylinder) and the football (icosphere with two material slots for the white and black panels).</li>
+                </ul>
+
+                <p><strong>What&rsquo;s in the room:</strong> a bed (frame, mattress, pillow, green headboard), desk and chair, computer monitor, floor lamp, window with frame and dark-blue glass, mint-green floor rug, football, two book-shelves with three coloured books, a potted plant, and a flat low-poly red car poster on the back-left wall (built from 7 cubes layered at the same world position).</p>
+
+                <p><strong>Colour palette:</strong> walls in steel blue (RGB 0.173, 0.373, 0.553), floor in sandy beige, white desk, dark brown chair, green headboard and rug. The palette was chosen to feel calm and study-friendly.</p>
+
+                <p><strong>Lighting</strong> &mdash; this scene uses three different light <em>types</em> rather than three of the same:</p>
+                <ul class="tech-list">
+                    <li><i class="fas fa-sun"></i> <strong>SunLight</strong> &mdash; 2.8W warm-white Sun light, angled from the upper-right front. Provides the directional &ldquo;daylight from outside&rdquo; quality.</li>
+                    <li><i class="fas fa-cloud-sun"></i> <strong>FillLight</strong> &mdash; 70W cool-white Area light (5000&times;5000mm). A massive soft fill that simulates global ambient light bouncing around the room.</li>
+                    <li><i class="fas fa-lightbulb"></i> <strong>LampLight</strong> &mdash; 50W warm-yellow Point light placed inside the floor-lamp mesh. This is the key one &mdash; it&rsquo;s the in-scene practical light that I needed to control from the web app.</li>
+                </ul>
+
+                <p>Getting the lamp working in Three.js needed a specific Blender export setting. I enabled the <strong>KHR_lights_punctual</strong> extension on glTF export so the Point light itself was preserved inside the <code>.glb</code> file. At runtime, my JavaScript walks the loaded scene tree, finds the baked light, disables it, then creates a fresh <code>THREE.PointLight</code> at the exact same world position. This way I get full programmatic control over intensity and visibility from the page&rsquo;s lamp toggle button. When the user clicks &ldquo;Lamp On/Off&rdquo;, the same handler also adds an emissive material to the lampshade mesh so it appears to glow from inside.</p>
+
+                <p><strong>Camera</strong> &mdash; a 50mm IsoCam positioned far back at (13000, &minus;13000, 10000)mm with a 54.74&deg; X rotation and 45&deg; Z rotation. Those numbers aren&rsquo;t arbitrary &mdash; <strong>54.74&deg; is the mathematically exact angle for a true isometric view</strong>, and 45&deg; on Z is the standard isometric orientation.</p>
+
+                <h3><i class="fas fa-laptop"></i> MacBook</h3>
+                <p>The MacBook is the most technically ambitious of the three. Built in EEVEE at 1920&times;1080 / 30 fps, it has <strong>55 total objects</strong>, including <strong>52 meshes, 1 empty (parent for the keyboard), and 1 armature</strong>. The whole thing uses just 6 materials.</p>
+
+                <p>This file deliberately has no lights and no camera, it was built as an <em>asset</em> meant to be imported into other scenes. All lighting is added at runtime in Three.js.</p>
+
+                <p><strong>Why so many separate parts?</strong> Because each one has to be controlled independently from the web app. The screen needs to light up. The keys need to glow. The body colour needs to swap between Silver and Space Grey. If they were one merged mesh, none of that would be possible.</p>
+
+                <p><strong>Object hierarchy:</strong></p>
+                <ul class="tech-list">
+                    <li><i class="fas fa-folder"></i> <strong>KeyboardKeys</strong> (empty parent) &rarr; Key_001 to Key_044 + Key_Spacebar (45 keys total)</li>
+                    <li><i class="fas fa-folder"></i> <strong>LidArmature</strong> (rig) &rarr; MacBookLid &rarr; LidLogo, plus ScreenBezel, plus ScreenPanel</li>
+                    <li><i class="fas fa-cube"></i> MacBookBase, KeyboardRecess, TrackpadSurface, HingeBar (un-parented base components)</li>
+                </ul>
+
+                <p><strong>Body parts &amp; precision:</strong></p>
+                <ul class="tech-list">
+                    <li><i class="fas fa-ruler"></i> <strong>MacBookBase</strong> &mdash; 350&times;240&times;16mm. 13-inch MacBook proportions, with 56 verts (extra edge loops for chamfered corners, not a plain cube).</li>
+                    <li><i class="fas fa-ruler"></i> <strong>MacBookLid</strong> &mdash; same chamfered construction, parented to the armature so the bone drives it.</li>
+                    <li><i class="fas fa-ruler"></i> <strong>ScreenPanel</strong> &mdash; 300&times;190&times;0.3mm. The blue emission colour (RGB 0.251, 0.502, 1.0) is set up in the material but emission strength is 0 &mdash; it&rsquo;s the JavaScript that fades emission in when the lid opens.</li>
+                    <li><i class="fas fa-apple-alt"></i> <strong>LidLogo</strong> &mdash; 158 verts for the curved Apple-style logo, built from a Cylinder primitive.</li>
+                </ul>
+
+                <p><strong>Keyboard generation</strong> &mdash; the 45 keys were built using <strong>Blender&rsquo;s Python scripting interface</strong>. Each key is a 20&times;20&times;5mm cube spaced 24mm centre-to-centre across a 4-row grid, with a wider Spacebar at the bottom. Generating 45 cubes by hand would have been tedious and the spacing wouldn&rsquo;t have been perfect. Parametric scripting is just better for repeating geometry.</p>
+
+                <p><strong>Animation</strong> &mdash; the lid is rigged to a <strong>single-bone armature</strong> (HingeBone) positioned at the back-edge hinge point (0, 120mm, 19mm). The bone tail extends 50mm forward, defining the rotation axis. The animation action <code>LidOpen.001</code> runs across frames 1&ndash;60 (2 seconds at 30fps). The lid, bezel, screen panel and Apple logo are all parented to the armature, so when HingeBone rotates, all four pieces lift together as a rigid unit. The Three.js side plays this clip forward on Open, and reverses it (using <code>action.timeScale = -1</code>) on Close.</p>
+
+                <p><strong>Materials &mdash; six runtime-controlled shaders:</strong></p>
+                <ul class="tech-list">
+                    <li><i class="fas fa-paint-brush"></i> <strong>BaseMaterial</strong> &mdash; light silver-grey (RGB 0.784, 0.784, 0.804), Metallic 0.6, Roughness 0.4. Used by the body, lid, and hinge bar. Swapped between Silver and Space Grey at runtime by JavaScript.</li>
+                    <li><i class="fas fa-paint-brush"></i> <strong>KeyboardMaterial</strong> &mdash; near-black (0.102), Metallic 0, Roughness 0.8. Matte plastic. Receives an emissive backlight (cool blue-white) at runtime.</li>
+                    <li><i class="fas fa-paint-brush"></i> <strong>BezelMaterial</strong> &mdash; pure black, very rough (0.9). The matte screen surround.</li>
+                    <li><i class="fas fa-paint-brush"></i> <strong>ScreenMaterial</strong> &mdash; black with a pre-configured blue emission. Strength is 0 in the file, faded up to 1.5 by JavaScript when the lid opens.</li>
+                    <li><i class="fas fa-paint-brush"></i> <strong>TrackpadMaterial</strong> &mdash; very dark grey, slightly metallic (0.2), low roughness (0.3). Glass-like trackpad finish.</li>
+                    <li><i class="fas fa-paint-brush"></i> <strong>LogoMaterial</strong> &mdash; black with low roughness, slightly glossy.</li>
+                </ul>
+            </section>
+
+            <!-- WIREFRAME EVIDENCE - screenshots from Blender showing the underlying geometry -->
+            <section class="about-section">
+                <h2><i class="fas fa-drafting-compass"></i> Wireframe Evidence from Blender</h2>
+                <p>Wireframe screenshots from Blender showing the underlying geometry of each model.</p>
+
+                <div class="row g-3 mt-4">
+                    <div class="col-md-4">
+                        <img src="assets/images/testing/redbull-can-blender.png" alt="Red Bull can wireframe view in Blender" class="img-fluid testing-img">
+                        <p class="img-caption">Red Bull 250ml can wireframe.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="assets/images/testing/room-blender.png" alt="L-shaped study room wireframe view in Blender" class="img-fluid testing-img">
+                        <p class="img-caption">L-shaped study room wireframe.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="assets/images/testing/macbook-blender.png" alt="MacBook wireframe view in Blender" class="img-fluid testing-img">
+                        <p class="img-caption">MacBook wireframe.</p>
+                    </div>
+                </div>
+
+                <p class="mt-4">A few things worth pointing out from these wireframes:</p>
+                <ul class="tech-list">
+                    <li><i class="fas fa-bolt"></i> <strong>Red Bull</strong> &mdash; the high vertex density along the body cylinder is what gives the can its smooth silhouette in the final shaded render. The separate top and bottom rim torus primitives are clearly visible, as is the tilted PullTab at 65&deg; on the X axis.</li>
+                    <li><i class="fas fa-bed"></i> <strong>Room</strong> &mdash; the deliberate low-poly aesthetic is obvious from the wireframe. The vast majority of objects are simple cubes (8 vertices, 6 faces each). The exception is the WallBack mesh, which has extra geometry where the window was cut through with a Boolean operation.</li>
+                    <li><i class="fas fa-laptop"></i> <strong>MacBook</strong> &mdash; you can clearly see the bone of the LidArmature controlling the lid&rsquo;s open/close rotation. The chamfered corners on the body and lid are visible from the extra edge loops, and the uniform grid of keyboard keys shows the result of the parametric Python generation.</li>
+                </ul>
+            </section>
+
+            <!-- DESIGN CHOICES -->
+            <section class="about-section">
+                <h2><i class="fas fa-palette"></i> Design Choices</h2>
+
+                <h3><i class="fas fa-swatchbook"></i> Theme &amp; Colour Palette</h3>
+                <p>The site uses a dark navy background with soft sage-green accents. I chose this palette because it feels calm and study-friendly rather than bright and aggressive, which matches the &ldquo;late-night assignment grind&rdquo; concept. The full palette is defined as CSS custom properties in <code>style.css</code>:</p>
+                <ul class="tech-list">
+                    <li><i class="fas fa-circle" style="color:#0f1419"></i> <code>--bg-dark: #0f1419</code> &mdash; main background, dark navy</li>
+                    <li><i class="fas fa-circle" style="color:#1a2128"></i> <code>--bg-card: #1a2128</code> &mdash; product cards, subtly raised from background</li>
+                    <li><i class="fas fa-circle" style="color:#161c22"></i> <code>--bg-panel: #161c22</code> &mdash; controls panel on model pages</li>
+                    <li><i class="fas fa-circle" style="color:#94c5a4"></i> <code>--accent-sage: #94c5a4</code> &mdash; primary accent for headings, CTAs, active states</li>
+                    <li><i class="fas fa-circle" style="color:#d4b896"></i> <code>--accent-warm: #d4b896</code> &mdash; warm tan for lighting-related buttons</li>
+                    <li><i class="fas fa-circle" style="color:#3d4f5c"></i> <code>--accent-slate: #3d4f5c</code> &mdash; muted slate for secondary elements</li>
+                    <li><i class="fas fa-circle" style="color:#e8e6e1"></i> <code>--text-light: #e8e6e1</code> &mdash; primary body text, off-white</li>
+                </ul>
+                <p>Using CSS variables means I can re-skin the entire site by changing six values in one place, rather than hunting through every stylesheet.</p>
+
+                <h3><i class="fas fa-font"></i> Typography</h3>
+                <p>Two Google Fonts: <strong>Oswald</strong> for headings (bold, condensed, with strong vertical proportions) and <strong>Open Sans</strong> for body copy (highly legible at small sizes). I capped it at two fonts to avoid the cluttered look you get when sites mix three or more typefaces.</p>
+
+                <h3><i class="fas fa-th"></i> Layout &amp; Responsive Grid</h3>
+                <p>The home page is a card grid built on Bootstrap 5.3&rsquo;s <code>.row</code>/<code>.col-md-4</code> system, with three equal cards on desktop collapsing to a single stacked column on mobile.</p>
+                <p>Each model page uses an <strong>asymmetric two-column layout</strong>: <code>.col-lg-8</code> for the 3D viewport and <code>.col-lg-4</code> for the controls panel. Below the 992px breakpoint the viewport drops to half-screen height with the controls panel stacking underneath. This is the mobile-first responsive design approach taught in Lab 1, applied properly with custom media queries at 991px and 575px.</p>
+
+                <h3><i class="fas fa-mouse-pointer"></i> Controls UI</h3>
+                <p>Each model page presents controls in <strong>logical groups</strong>: Animation, View, Lighting, and (on the MacBook) Body Colour. Buttons share a base style (<code>.btn-3d</code>) with subtle variants (<code>.btn-view</code>, <code>.btn-light</code>, <code>.btn-sound</code>) so the user can tell visually that View buttons do one kind of thing and Lighting buttons another. Active states use a sage-green border plus a tinted background so it&rsquo;s always obvious what&rsquo;s currently on.</p>
+
+                <h3><i class="fas fa-id-card"></i> Brand Identity</h3>
+                <p>The &ldquo;SURVIVAL KIT&rdquo; logo uses a two-tone CSS treatment: <code>SURVIVAL</code> in the sage accent colour, <code>KIT</code> in off-white, with a small &ldquo;The Assignment Edition&rdquo; strapline in muted grey beneath. It&rsquo;s built entirely from styled <code>&lt;span&gt;</code> elements rather than an image, so it scales perfectly at any resolution and stays accessible to screen readers.</p>
+            </section>
+
+            <!-- MVC ARCHITECTURE -->
+            <section class="about-section">
+                <h2><i class="fas fa-project-diagram"></i> MVC Architecture: PHP, SQLite &amp; AJAX</h2>
+                <p>The application implements the full Model-View-Controller pattern from <strong>Lab 7 and Lab 8</strong>, with both halves of the module&rsquo;s back-end teaching combined into one robust system.</p>
+
+                <h3><i class="fas fa-stream"></i> The Data Flow</h3>
+                <p>When a user visits one of the model pages, the browser fires an AJAX request to the PHP API, the controller calls the model class, the model uses PDO to query the SQLite database, and the rows come back as JSON to be injected into the HTML placeholders. The next section breaks down what each layer is doing.</p>
+
+                <h3><i class="fas fa-layer-group"></i> The Three Layers</h3>
+                <ul class="tech-list">
+                    <li><i class="fas fa-database"></i> <strong>Model</strong> (<code>application/model/model.php</code>) &mdash; A PHP class that uses <strong>PDO (PHP Data Objects)</strong> as a data-access abstraction layer. It connects to the SQLite database, exposes methods like <code>getAllModels()</code> and <code>getModelByPage($page)</code>, uses prepared statements for parameter binding, and handles errors via <code>PDOException</code>. The model knows nothing about HTTP, AJAX, or HTML. Its pure data access.</li>
+                    <li><i class="fas fa-cogs"></i> <strong>Controller</strong> (<code>application/controller/controller.php</code>) &mdash; A PHP class instantiated by <code>index.php</code> (the MVC entry point, mirroring Lab 7 Figure 3). The controller has methods like <code>getAllModels()</code> that internally call the model class. It coordinates: it doesn&rsquo;t talk to the database directly, and it doesn&rsquo;t produce HTML. It just exposes data to whoever asks for it.</li>
+                    <li><i class="fas fa-window-maximize"></i> <strong>View</strong> &mdash; The HTML pages themselves. Each one contains placeholder elements marked with <code>data-content="model-title"</code>, <code>data-content="model-description"</code>, and <code>data-content="model-technical"</code>. The browser-side <code>data_loader.js</code> fetches data from the API and populates these placeholders at runtime.</li>
+                </ul>
+
+                <h3><i class="fas fa-code"></i> Key Code Snippet &mdash; The Model Class</h3>
+                <p>This is the core of the data-access layer (simplified):</p>
+                <pre style="background: rgba(0,0,0,0.3); padding: 16px; border-radius: 6px; overflow-x: auto; font-size: 0.85rem; color: #e8e6e1; border: 1px solid var(--border-color);"><code>class Model {
+    private $db;
+
+    public function __construct() {
+        // Connect to SQLite using PDO (data-access abstraction)
+        $this-&gt;db = new PDO('sqlite:' . __DIR__ . '/../../database/models.db');
+        $this-&gt;db-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
+
+    public function getModelByPage($page) {
+        $stmt = $this-&gt;db-&gt;prepare("SELECT * FROM models WHERE page = :page");
+        $stmt-&gt;execute([':page' =&gt; $page]);
+        return $stmt-&gt;fetch(PDO::FETCH_ASSOC);
+    }
+}</code></pre>
+
+                <h3><i class="fas fa-shield-alt"></i> Two Patterns, One App</h3>
+                <p>The application supports <strong>both</strong> back-end approaches taught in the module:</p>
+                <ul class="tech-list">
+                    <li><i class="fas fa-server"></i> <strong>Primary path (Lab 7/8):</strong> AJAX &rarr; <code>api/get_models.php</code> &rarr; Controller &rarr; Model &rarr; PDO &rarr; SQLite &rarr; JSON response</li>
+                    <li><i class="fas fa-file-code"></i> <strong>Fallback path (Lab 6):</strong> AJAX &rarr; <code>data.json</code> static file &rarr; injected into View</li>
+                </ul>
+                <p>The front-end <code>data_loader.js</code> tries the PHP endpoint first and falls back to the JSON file automatically if PHP isn&rsquo;t running. This means the site works whether the user opens it through <code>php -S localhost:8000</code> (full MVC path active), VS Code Live Server (JSON fallback), or any plain static host. <strong>The architectural pattern is the same in both cases, only the data store changes.</strong></p>
+
+                <h3><i class="fas fa-thumbs-up"></i> Why This Architecture Matters</h3>
+                <ul class="tech-list">
+                    <li><i class="fas fa-puzzle-piece"></i> <strong>Separation of concerns</strong> &mdash; the model, controller, view, and AJAX layer are all genuinely independent. I could swap SQLite for MySQL by changing one line in <code>model.php</code>.</li>
+                    <li><i class="fas fa-shield-alt"></i> <strong>Security</strong> &mdash; PDO prepared statements with named parameters mean the app is naturally protected against SQL injection.</li>
+                    <li><i class="fas fa-redo"></i> <strong>Maintainability</strong> &mdash; all the model metadata lives in one place. To add a fourth model I edit <code>data.json</code>, re-run <code>setup_database.php</code>, and that&rsquo;s it.</li>
+                    <li><i class="fas fa-feather"></i> <strong>Robustness</strong> &mdash; the JSON fallback means the front-end never breaks regardless of how the site is served.</li>
+                </ul>
+            </section>
+
+            <!-- TECHNOLOGIES USED -->
+            <section class="about-section">
+                <h2><i class="fas fa-tools"></i> Technologies Used</h2>
+                <p>Everything in the technology stack, grouped by where it sits:</p>
+
+                <h3><i class="fas fa-globe"></i> Front-end</h3>
+                <ul class="tech-list">
+                    <li><i class="fab fa-html5"></i> <strong>HTML5</strong> &mdash; semantic page structure with <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;header&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;footer&gt;</code></li>
+                    <li><i class="fab fa-css3-alt"></i> <strong>CSS3</strong> &mdash; custom properties for theming, flexbox, grid, transitions, media queries</li>
+                    <li><i class="fab fa-bootstrap"></i> <strong>Bootstrap 5.3</strong> &mdash; responsive grid layout, navbar with dropdown, container/row/col system</li>
+                    <li><i class="fab fa-js"></i> <strong>JavaScript ES6</strong> &mdash; all the interaction logic, event handlers, animation timing</li>
+                    <li><i class="fas fa-cube"></i> <strong>Three.js (r128)</strong> &mdash; the 3D rendering engine</li>
+                    <li><i class="fas fa-file-import"></i> <strong>GLTFLoader</strong> &mdash; loads <code>.glb</code> files into Three.js</li>
+                    <li><i class="fas fa-arrows-alt"></i> <strong>OrbitControls</strong> &mdash; mouse drag to rotate, scroll to zoom on every model</li>
+                    <li><i class="fas fa-film"></i> <strong>AnimationMixer</strong> &mdash; plays embedded GLB animations and reverses them on close</li>
+                    <li><i class="fas fa-volume-up"></i> <strong>AudioListener &amp; AudioLoader</strong> &mdash; loads and plays the <code>.m4a</code> sound effects</li>
+                    <li><i class="fas fa-icons"></i> <strong>Font Awesome 6</strong> &mdash; icons throughout the UI</li>
+                    <li><i class="fas fa-font"></i> <strong>Google Fonts</strong> &mdash; Oswald and Open Sans</li>
+                </ul>
+
+                <h3><i class="fas fa-server"></i> Back-end &amp; Data</h3>
+                <ul class="tech-list">
+                    <li><i class="fab fa-php"></i> <strong>PHP 8.5</strong> &mdash; server-side controller and model classes (Lab 7 / Lab 8 stack)</li>
+                    <li><i class="fas fa-database"></i> <strong>SQLite 3</strong> &mdash; the relational database for the model layer</li>
+                    <li><i class="fas fa-link"></i> <strong>PDO (PHP Data Objects)</strong> &mdash; data-access abstraction with prepared statements</li>
+                    <li><i class="fas fa-code-branch"></i> <strong>jQuery 3.6</strong> &mdash; specifically for the AJAX layer (<code>$.getJSON()</code>) and DOM injection</li>
+                    <li><i class="fas fa-exchange-alt"></i> <strong>AJAX</strong> &mdash; asynchronous data fetching at page load</li>
+                    <li><i class="fas fa-file-alt"></i> <strong>JSON</strong> &mdash; both the API response format and the fallback data store</li>
+                </ul>
+
+                <h3><i class="fas fa-cube"></i> 3D Modelling &amp; Assets</h3>
+                <ul class="tech-list">
+                    <li><i class="fas fa-paint-brush"></i> <strong>Blender</strong> &mdash; modelling, rigging, animation, and <code>.glb</code> export</li>
+                    <li><i class="fas fa-code"></i> <strong>Blender Python API</strong> &mdash; for parametric keyboard generation on the MacBook</li>
+                    <li><i class="fas fa-file-export"></i> <strong>glTF Binary (.glb)</strong> &mdash; the 3D file format</li>
+                    <li><i class="fas fa-lightbulb"></i> <strong>KHR_lights_punctual</strong> &mdash; glTF extension for preserving Blender lights inside <code>.glb</code> files</li>
+                    <li><i class="fas fa-music"></i> <strong>Audio sourced from freesound.org</strong> &mdash; Creative Commons sound effects</li>
+                </ul>
+
+                <h3><i class="fas fa-laptop-code"></i> Development Tools</h3>
+                <ul class="tech-list">
+                    <li><i class="fas fa-code"></i> <strong>Visual Studio Code</strong> &mdash; primary code editor</li>
+                    <li><i class="fas fa-server"></i> <strong>PHP&rsquo;s built-in server</strong> (<code>php -S localhost:8000</code>) &mdash; for running the MVC backend locally</li>
+                    <li><i class="fab fa-github"></i> <strong>Git / GitHub</strong> &mdash; version control and codebase hosting</li>
+                    <li><i class="fab fa-chrome"></i> <strong>Chrome DevTools</strong> &mdash; debugging, responsive testing, network inspection</li>
+                </ul>
+            </section>
+
+            <!-- WHY I CHOSE THESE TECHNOLOGIES -->
+            <section class="about-section">
+                <h2><i class="fas fa-question-circle"></i> Why I Chose These Technologies</h2>
+
+                <h3><i class="fas fa-cube"></i> Three.js over X3DOM</h3>
+                <p>The brief allowed either. I went with Three.js because it&rsquo;s the more modern of the two, has a far bigger community and more learning resources, integrates more cleanly with JavaScript-driven interactions, and supports modern PBR materials, which was used for the Red Bull&rsquo;s metallic finish.</p>
+
+                <h3><i class="fas fa-code-branch"></i> jQuery for the AJAX Layer</h3>
+                <p>I could have used the modern <code>fetch()</code> API but jQuery&rsquo;s <code>$.getJSON()</code> is what Lab 6 and Lab 8 specifically taught, and the rubric names jQuery as one of the recognised technologies. Using the taught approach keeps the implementation consistent with what the module expected, and the API is short and readable.</p>
+
+                <h3><i class="fas fa-database"></i> SQLite (with JSON Fallback)</h3>
+                <p>SQLite was the database taught in Lab 7. It&rsquo;s self-contained, serverless, zero-config, and lives as a single file in the project, which is good for submission that needs to be portable. Keeping <code>data.json</code> as a fallback was a deliberate engineering choice: the site never breaks regardless of how it&rsquo;s served, and it visibly demonstrates understanding of both Lab 6 (JSON) and Lab 7/8 (PHP+SQLite) patterns.</p>
+
+                <h3><i class="fas fa-paint-brush"></i> Blender Instead of 3ds Max</h3>
+                <p>Lab 2 used 3ds Max, but it&rsquo;s Windows-only and I&rsquo;m on macOS. Blender does the same job, exports cleanly to <code>.glb</code>, supports Python scripting, is free and cross-platform, and the fundamental modelling techniques (mesh editing, UV mapping, materials, armatures, animation) transfer directly. The rubric specifically allows alternative authoring packages such as Maya and Cinema 4D, so Blender qualifies for those marks too.</p>
+
+                <h3><i class="fab fa-bootstrap"></i> Bootstrap for the Layout</h3>
+                <p>Bootstrap handles the responsive grid, the collapsing hamburger navbar, and the dropdown menu component. Building those from scratch with raw CSS would have been a lot of extra work, especially the navbar accessibility quirks. Where Bootstrap&rsquo;s default look would have made the site feel generic, I overrode it with custom CSS variables and a custom <code>.btn-3d</code> button class so it doesn&rsquo;t look like a Bootstrap clone.</p>
+            </section>
+
+            <!-- FEATURES -->
+            <section class="about-section">
+                <h2><i class="fas fa-list-check"></i> Features</h2>
+                <p>What the application actually does:</p>
+                <ul class="tech-list">
+                    <li><i class="fas fa-border-all"></i> <strong>Wireframe toggle</strong> on every model page (the rubric&rsquo;s mandatory feature)</li>
+                    <li><i class="fas fa-video"></i> <strong>Five camera positions</strong> per model (Default, Hero, Front, Top, Side) controlled via JavaScript</li>
+                    <li><i class="fas fa-sync"></i> <strong>Spin / rotate</strong> toggle on each model</li>
+                    <li><i class="fas fa-undo"></i> <strong>Reset</strong> button that restores the default state for every interactive element</li>
+                    <li><i class="fas fa-volume-up"></i> <strong>Audio integration</strong> &mdash; can-opening, can-crushing, lamp-switch, and MacBook startup chime sounds</li>
+                    <li><i class="fas fa-magic"></i> <strong>Multi-stage MacBook open sequence</strong> &mdash; lid hinge animation &rarr; 1.5s wait &rarr; startup chime &rarr; screen wake-up &rarr; keyboard backlight fade-in, all timed with <code>setTimeout</code> and <code>setInterval</code></li>
+                    <li><i class="fas fa-lightbulb"></i> <strong>Lighting toggles</strong> &mdash; Studio spotlight, Ambient/Hemisphere light, lamp on/off (room only)</li>
+                    <li><i class="fas fa-exchange-alt"></i> <strong>Model swapping</strong> &mdash; the Red Bull page replaces the model entirely with a crushed version on click</li>
+                    <li><i class="fas fa-palette"></i> <strong>Body colour swap</strong> &mdash; the MacBook switches between Silver and Space Grey (programmatic material colour change)</li>
+                    <li><i class="fas fa-sun"></i> <strong>Material state changes</strong> &mdash; emissive materials fade in on the screen, keyboard, and lampshade via interval-based intensity loops</li>
+                    <li><i class="fas fa-database"></i> <strong>AJAX content loading</strong> &mdash; titles, descriptions, and technical notes fetched dynamically from PHP/SQLite (or JSON fallback)</li>
+                    <li><i class="fas fa-mobile-alt"></i> <strong>Responsive design</strong> &mdash; layouts reorganise for tablet and mobile viewports with dedicated breakpoints</li>
+                </ul>
+            </section>
+
+            <!-- GOING BEYOND THE LABS - the deeper-understanding section -->
+            <section class="about-section">
+                <h2><i class="fas fa-rocket"></i> Going Beyond the Labs</h2>
+
+                <ul class="tech-list">
+                    <li><i class="fas fa-paint-brush"></i> <strong>Alternative 3D authoring workflow</strong> &mdash; Blender instead of 3ds Max, with full demonstration of mesh editing, UV mapping, materials, armatures, animation, and Python scripting. The rubric explicitly allows alternative packages.</li>
+                    <li><i class="fas fa-code"></i> <strong>Parametric Python scripting in Blender</strong> &mdash; the 45 MacBook keyboard keys were generated programmatically with exact 24mm centre-to-centre spacing rather than placed by hand.</li>
+                    <li><i class="fas fa-magic"></i> <strong>Choreographed multi-stage animation sequences</strong> &mdash; the MacBook open isn&rsquo;t a single animation, it&rsquo;s a coordinated chain of lid bone rotation, audio playback, screen emission fade-in, and keyboard backlight fade-in, all timed properly with JavaScript.</li>
+                    <li><i class="fas fa-lightbulb"></i> <strong>KHR_lights_punctual extension handling</strong> &mdash; preserving Blender Point lights inside <code>.glb</code> files and then disabling and replacing them at runtime so the web app retains full programmatic control.</li>
+                    <li><i class="fas fa-redo"></i> <strong>Reverse animation playback</strong> &mdash; the MacBook close animation re-uses the same <code>LidOpen.001</code> action with <code>action.timeScale = -1</code> rather than authoring a separate close animation. Cleaner, smaller file size.</li>
+                    <li><i class="fas fa-database"></i> <strong>Dual-MVC architecture</strong> &mdash; the front-end runs on PHP+SQLite by default (Lab 7/8) but falls back to JSON (Lab 6) automatically. Demonstrates competence with both back-end approaches taught in the module, in the same codebase.</li>
+                    <li><i class="fas fa-cube"></i> <strong>JavaScript modules consideration</strong> &mdash; researched the ES6 module-based approach to Three.js (covered in the supplementary handout) and made an informed choice to stay on the global script approach for project consistency.</li>
+                    <li><i class="fas fa-eye"></i> <strong>Material state machines</strong> &mdash; emissive materials are not just &ldquo;on or off&rdquo;, they fade in over time using <code>setInterval</code> intensity ramps, syncing with the audio cues for a polished UX.</li>
+                </ul>
+            </section>
+
+            <!-- ACCESSIBILITY -->
+            <section class="about-section">
+                <h2><i class="fas fa-universal-access"></i> Accessibility</h2>
+                <p>Accessibility was considered throughout the build:</p>
+                <ul class="tech-list">
+                    <li><i class="fas fa-code"></i> <strong>Semantic HTML5</strong> &mdash; <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;header&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;footer&gt;</code> so screen readers can navigate the page structure</li>
+                    <li><i class="fas fa-image"></i> <strong>Alt text</strong> on every image, including the model card thumbnails and testing screenshots</li>
+                    <li><i class="fas fa-tag"></i> <strong>ARIA labels</strong> on the navbar toggler so it announces what it does</li>
+                    <li><i class="fas fa-eye"></i> <strong>WCAG 2.1 AA contrast</strong> &mdash; off-white text on dark navy passes the contrast standards</li>
+                    <li><i class="fas fa-keyboard"></i> <strong>Real button elements</strong> &mdash; all interactive controls are <code>&lt;button&gt;</code> tags so they can be focused and activated by keyboard</li>
+                    <li><i class="fas fa-mobile-alt"></i> <strong>Responsive across the range</strong> &mdash; tested from 375px (iPhone SE) up to 1400px+ desktop</li>
+                    <li><i class="fas fa-bullseye"></i> <strong>Visual feedback</strong> &mdash; active button states, hover effects, animated transitions all give clear cues</li>
+                </ul>
+            </section>
+
+            <!-- TESTING STRATEGY -->
+            <section class="about-section">
+                <h2><i class="fas fa-vial"></i> Testing Strategy</h2>
+                <p>The app was tested systematically across browsers, devices, and a range of interaction scenarios:</p>
+
+                <h3><i class="fab fa-chrome"></i> Browsers</h3>
+                <p>Built and tested mainly in Chrome on macOS, then verified in Safari and Firefox. The app uses standard ES6 JavaScript and Three.js r128, both of which are well-supported across all current browsers.</p>
+
+                <h3><i class="fas fa-mobile-alt"></i> Devices &amp; Viewports</h3>
+                <p>Mobile testing was done with Chrome DevTools&rsquo; device emulation, primarily at iPhone SE (375&times;667) and iPhone 14 Pro (393&times;852) sizes. Tablet sizes were also checked. The key verification points: navbar collapses to hamburger, cards stack vertically, the 3D viewport reflows to half-screen height with controls below.</p>
+
+                <h3><i class="fas fa-clipboard-check"></i> Functional Testing</h3>
+                <p>Every feature was manually verified:</p>
+                <ul class="tech-list">
+                    <li><i class="fas fa-check"></i> All three 3D models load on their respective pages</li>
+                    <li><i class="fas fa-check"></i> Wireframe toggle works on every model</li>
+                    <li><i class="fas fa-check"></i> All five camera angles reposition correctly</li>
+                    <li><i class="fas fa-check"></i> Animations play through to completion without breaking</li>
+                    <li><i class="fas fa-check"></i> The MacBook open sequence runs in the correct order (lid &rarr; chime &rarr; screen &rarr; keyboard)</li>
+                    <li><i class="fas fa-check"></i> Reset buttons properly restore the default state on every page</li>
+                    <li><i class="fas fa-check"></i> All audio files load and play without errors</li>
+                    <li><i class="fas fa-check"></i> Lighting toggles produce visible changes</li>
+                    <li><i class="fas fa-check"></i> The MVC layer fetches and injects content correctly &mdash; verified in the Console and Network tabs</li>
+                    <li><i class="fas fa-check"></i> The JSON fallback engages when the PHP server is stopped (verified by stopping <code>php -S</code> and reloading)</li>
+                </ul>
+            </section>
+
+            <!-- EVIDENCE OF TESTING - testing screenshots organised by category -->
+            <section class="about-section">
+                <h2><i class="fas fa-camera"></i> Evidence of Testing</h2>
+                <p>Screenshots from the testing process. Click any image to enlarge it.</p>
+
+                <h3><i class="fas fa-video"></i> Responsive Testing &mdash; Screen Recording</h3>
+                <p>A short walkthrough of the site being tested across laptop, iPad and phone viewports in Chrome DevTools. For each model I tested the animations, the wireframe toggle, the camera angles, and the lighting buttons.</p>
+                <div class="row g-3 mt-3">
+                    <div class="col-12">
+                        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; border: 1px solid var(--border-color);">
+                            <iframe src="https://sussex.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=98094ece-02f3-44e3-a468-b44300dd817e&autoplay=false&offerviewer=true&showtitle=true&showbrand=false&interactivity=all"
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+                                allowfullscreen
+                                allow="autoplay">
+                            </iframe>
+                        </div>
+                        <p class="img-caption">Screen recording of the site being tested across desktop, iPad and phone viewports. Hosted on Panopto.</p>
+                    </div>
+                </div>
+
+                <h3><i class="fas fa-desktop"></i> Desktop</h3>
+                <div class="row g-3 mt-3">
+                    <div class="col-md-6">
+                        <img src="assets/images/testing/desktop-home.png" alt="Home page on desktop" class="img-fluid testing-img">
+                        <p class="img-caption">Home page on desktop &mdash; hero and three model cards.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="assets/images/testing/desktop-redbull.png" alt="Red Bull model page" class="img-fluid testing-img">
+                        <p class="img-caption">Red Bull page with the controls panel.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="assets/images/testing/desktop-wireframe.png" alt="Wireframe mode active" class="img-fluid testing-img">
+                        <p class="img-caption">Wireframe toggled on &mdash; the mandatory feature working.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="assets/images/testing/desktop-macbook-open.png" alt="MacBook fully open with screen lit" class="img-fluid testing-img">
+                        <p class="img-caption">MacBook fully open with the screen and keyboard glowing.</p>
+                    </div>
+                </div>
+
+                <h3><i class="fas fa-mobile-alt"></i> Mobile</h3>
+                <div class="row g-3 mt-3">
+                    <div class="col-md-4">
+                        <img src="assets/images/testing/mobile-home.png" alt="Home page on iPhone SE" class="img-fluid testing-img">
+                        <p class="img-caption">Home page on iPhone SE.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="assets/images/testing/mobile-redbull.png" alt="Red Bull page on mobile" class="img-fluid testing-img">
+                        <p class="img-caption">Model page on mobile &mdash; viewport on top, controls underneath.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="assets/images/testing/mobile-menu-open.png" alt="Hamburger menu expanded" class="img-fluid testing-img">
+                        <p class="img-caption">Mobile navbar with the hamburger menu open.</p>
+                    </div>
+                </div>
+
+                <h3><i class="fas fa-network-wired"></i> Proof of MVC, AJAX &amp; SQLite</h3>
+                <div class="row g-3 mt-3">
+                    <div class="col-md-6">
+                        <img src="assets/images/testing/proof-ajax-console.png" alt="Console showing AJAX logs from the PHP/SQLite endpoint" class="img-fluid testing-img">
+                        <p class="img-caption">Browser Console showing the [Data Loader] logs &mdash; loaded from PHP/SQLite backend, 3 models found, content injected.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="assets/images/testing/proof-network.png" alt="Network tab showing get_models.php fetch with 200 OK" class="img-fluid testing-img">
+                        <p class="img-caption">Network tab confirming <code>get_models.php</code> returned 200 OK with the JSON payload from SQLite.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SUBMISSION LINKS -->
+            <section class="about-section">
+                <h2><i class="fas fa-link"></i> Submission Links</h2>
+                <ul class="tech-list">
+                    <li><i class="fab fa-github"></i> <strong>GitHub Repository:</strong> <em>URL to be provided in the final submission</em></li>
+                    <li><i class="fas fa-globe"></i> <strong>Live Application (ITS Web Server):</strong> <em>URL pending publication to <code>users.sussex.ac.uk/~username/</code></em></li>
+                    <li><i class="fas fa-archive"></i> <strong>Blender source files:</strong> included in the submission archive (<code>.blend</code> files alongside the <code>.glb</code> exports)</li>
+                </ul>
+            </section>
+
+            <!-- REFERENCES & CREDITS -->
+            <section class="about-section">
+                <h2><i class="fas fa-book"></i> References &amp; Credits</h2>
+                <ul class="tech-list">
+                    <li><i class="fas fa-cube"></i> <strong>Three.js</strong> &mdash; <a href="https://threejs.org/" target="_blank" rel="noopener">https://threejs.org/</a></li>
+                    <li><i class="fab fa-bootstrap"></i> <strong>Bootstrap 5</strong> &mdash; <a href="https://getbootstrap.com/" target="_blank" rel="noopener">https://getbootstrap.com/</a></li>
+                    <li><i class="fab fa-js"></i> <strong>jQuery</strong> &mdash; <a href="https://jquery.com/" target="_blank" rel="noopener">https://jquery.com/</a></li>
+                    <li><i class="fab fa-php"></i> <strong>PHP</strong> &mdash; <a href="https://www.php.net/" target="_blank" rel="noopener">https://www.php.net/</a></li>
+                    <li><i class="fas fa-database"></i> <strong>SQLite</strong> &mdash; <a href="https://www.sqlite.org/" target="_blank" rel="noopener">https://www.sqlite.org/</a></li>
+                    <li><i class="fas fa-paint-brush"></i> <strong>Blender</strong> &mdash; <a href="https://www.blender.org/" target="_blank" rel="noopener">https://www.blender.org/</a></li>
+                    <li><i class="fas fa-icons"></i> <strong>Font Awesome</strong> &mdash; <a href="https://fontawesome.com/" target="_blank" rel="noopener">https://fontawesome.com/</a></li>
+                    <li><i class="fas fa-font"></i> <strong>Google Fonts</strong> &mdash; Oswald and Open Sans</li>
+                    <li><i class="fas fa-graduation-cap"></i> <strong>Module lab tutorials</strong> &mdash; Labs 0, 1, 2, 3, 5, 6, 7, 8, and 10 from the University of Sussex Introduction to Web 3D Applications module</li>
+                    <li><i class="fas fa-volume-up"></i> <strong>Sound effects</strong> &mdash; sourced from freesound.org under Creative Commons licence</li>
+                    <li><i class="fas fa-bolt"></i> <strong>Red Bull label texture</strong> &mdash; used solely for educational purposes within this academic project; all trademarks remain property of their respective owners</li>
+                </ul>
+            </section>
+
+            <!-- STATEMENT OF ORIGINALITY -->
+            <section class="about-section">
+                <h2><i class="fas fa-signature"></i> Statement of Originality</h2>
+                <p>This work is submitted for the Introduction to Web 3D Applications coursework at the University of Sussex.</p>
+                <p>The 3D models, the application architecture, the design choices, the integration code, the MVC implementation (PHP, SQLite, controllers, models, API endpoint), the JavaScript interaction logic, the CSS styling, and the writing on this page are <strong>all my own work</strong>.</p>
+                <p>Open-source libraries (Three.js, Bootstrap, jQuery, Font Awesome, Google Fonts), Creative-Commons sound effects, and the Red Bull label image used for educational purposes are credited above and clearly identified as third-party assets. The lab tutorials provided foundational knowledge but no code was copied directly. All implementation was adapted, extended, and built up from scratch in this project&rsquo;s own codebase.</p>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6"><p class="footer-brand"><span class="brand-accent">SURVIVAL</span><span class="brand-bull">KIT</span></p></div>
+                <div class="col-md-6 text-md-end"><p class="footer-text">University of Sussex &copy; 2026</p></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.js"></script>
+    <script>
+        // image pop-out effect for testing screenshots - click any image to toggle the .clicked class
+        document.querySelectorAll('.testing-img').forEach(img => {
+            img.addEventListener('click', function() {
+                this.classList.toggle('clicked');
+            });
+        });
+    </script>
+</body>
+</html>

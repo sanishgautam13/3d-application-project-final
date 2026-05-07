@@ -1,0 +1,43 @@
+{
+  "siteName": "The Assignment Survival Kit",
+  "tagline": "The Assignment Edition",
+  "siteDescription": "These are the three things that get me through every deadline — energy, a quiet space, and the laptop that does all the work.",
+  "models": [
+    {
+      "id": "redbull",
+      "shortTitle": "The Energy",
+      "fullTitle": "Red Bull 250ml",
+      "shortDescription": "A 250ml Red Bull — the difference between finishing a chapter at 2am or giving up. Open it, crush it, hear it.",
+      "longDescription": "A realistic 3D model of a Red Bull 250ml energy drink can. Use the buttons below to interact with the model.",
+      "technicalNote": "This Red Bull can was modelled in Blender 5.1 with accurate 250ml slim can dimensions (26.5mm radius, 134.5mm height). The label texture was UV-mapped cylindrically. The pull tab, rivet, and drinking hole score line were modelled as separate objects for realism.",
+      "modelFile": "assets/models/redbull_can.glb",
+      "page": "redbull.html",
+      "icon": "fas fa-bolt",
+      "thumbnail": "assets/images/redbull-card.png"
+    },
+    {
+      "id": "room",
+      "shortTitle": "The Space",
+      "fullTitle": "L-Shaped Room",
+      "shortDescription": "The room where it all happens. Desk, bed, window, lamp. Toggle the lamp on for those late-night sessions.",
+      "longDescription": "An interactive room environment featuring a desk with computer, bed, table lamp, window, and floor rug. Toggle the lamp and explore the space.",
+      "technicalNote": "This room was modelled in Blender with multiple interactive elements. The L-shaped layout demonstrates complex architectural geometry beyond simple product modelling.",
+      "modelFile": "assets/models/room.glb",
+      "page": "room.html",
+      "icon": "fas fa-bed",
+      "thumbnail": "assets/images/room-card.png"
+    },
+    {
+      "id": "macbook",
+      "shortTitle": "The Tool",
+      "fullTitle": "MacBook Pro",
+      "shortDescription": "The MacBook itself. Open the lid, watch it boot, and see the screen come to life — same as every assignment morning.",
+      "longDescription": "Open the lid and watch the screen come to life. A demonstration of multi-stage 3D animation, dynamic lighting and material state changes.",
+      "technicalNote": "This MacBook was modelled in Blender with an armature-driven hinge animation. The lid, screen, keyboard backlight and Apple-style logo are individually controlled materials that respond to power state changes via JavaScript.",
+      "modelFile": "assets/models/macbook.glb",
+      "page": "macbook.html",
+      "icon": "fas fa-laptop",
+      "thumbnail": "assets/images/macbook-card.png"
+    }
+  ]
+}
