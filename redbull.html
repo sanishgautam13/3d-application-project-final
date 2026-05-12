@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Red Bull Can - The Assignment Survival Kit</title>
 
-    <!-- Google Fonts - Open Sans for body text, Oswald for headings -->
+    <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 
@@ -13,13 +13,13 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="https://kit.fontawesome.com/6ac3910c4e.js" crossorigin="anonymous"></script>
 
-    <!-- my own stylesheets -->
+    <!-- stylesheets -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style_button.css">
 </head>
 <body>
 
-    <!-- NAVBAR - same on every page, "3D Models" dropdown is highlighted here -->
+    <!-- NAVBAR  -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.html">
@@ -49,17 +49,17 @@
     </div>
 </nav>
 
-    <!-- MAIN MODEL PAGE - left column is the 3D viewport, right column is the controls panel -->
+    <!-- MAIN MODEL PAGE -->
     <main class="model-page">
         <div class="container-fluid">
             <div class="row">
 
-                <!-- 3D viewport - Three.js renders into this div -->
+                <!-- 3D viewport -->
                 <div class="col-lg-8 p-0">
                     <div id="threeContainer" class="three-viewport"></div>
                 </div>
 
-                <!-- controls panel - title/description load dynamically from data_loader.js (PHP/SQLite or JSON) -->
+                <!-- controls panel -->
                 <div class="col-lg-4 controls-panel">
                     <h2 class="model-title" data-content="model-title">Loading...</h2>
                     <p class="model-description" data-content="model-description">Loading...</p>
@@ -68,7 +68,7 @@
                         <p data-content="model-technical">Loading...</p>
                     </div>
 
-                    <!-- Animation controls - spin, open, crush, reset -->
+                    <!-- Animation controls -->
                     <div class="controls-group">
                         <h4><i class="fas fa-play-circle"></i> Animation</h4>
                         <div class="btn-grid">
@@ -79,7 +79,7 @@
                         </div>
                     </div>
 
-                    <!-- View controls - wireframe toggle plus four camera angles -->
+                    <!-- View controls -->
                     <div class="controls-group">
                         <h4><i class="fas fa-eye"></i> View</h4>
                         <div class="btn-grid">
@@ -91,7 +91,7 @@
                         </div>
                     </div>
 
-                    <!-- Lighting controls - toggle the studio spotlight and ambient hemi light on/off -->
+                    <!-- Lighting controls -->
                     <div class="controls-group">
                         <h4><i class="fas fa-lightbulb"></i> Lighting</h4>
                         <div class="btn-grid">
@@ -114,13 +114,13 @@
     </div>
     </footer>
 
-    <!-- SCRIPTS - load order matters, jQuery and Three.js have to come before my scripts that use them -->
+    <!-- SCRIPTS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/bootstrap.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-    <!-- my own scripts - data_loader handles AJAX, redbull_script handles the 3D scene -->
+    <!-- scripts -->
     <script src="data_loader.js"></script>
     <script src="redbull_script.js"></script>
 </body>

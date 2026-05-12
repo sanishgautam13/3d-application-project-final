@@ -1,5 +1,5 @@
 <?php
-/* CONTROLLER — handles requests, calls the model, returns data */
+//handles requests, calls the model, returns data
 
 class Controller
 {
@@ -10,7 +10,7 @@ class Controller
         $this->model = new Model();
     }
 
-    // Get all models — used by the API endpoint
+    // Get all models
     public function getAllModels()
     {
         return $this->model->getAllModels();
@@ -22,7 +22,7 @@ class Controller
         return $this->model->getModelByPage($page);
     }
 
-    // Return the site name (kept for parity with the JSON-based loader)
+    // Return the site name 
     public function getSiteName()
     {
         return 'The Assignment Survival Kit';

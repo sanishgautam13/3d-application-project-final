@@ -1,6 +1,5 @@
 <?php
-/* API ENDPOINT — get_models.php
-   This is what the AJAX call from data_loader.js hits.*/
+//get_models.php
 
 // Set the correct response headers for JSON
 header('Content-Type: application/json');
@@ -13,7 +12,7 @@ require_once __DIR__ . '/../application/controller/controller.php';
 // Instantiate the controller
 $controller = new Controller();
 
-// If a specific page was requested, return just that one model
+//return just that one model
 if (isset($_GET['page']) && !empty($_GET['page'])) {
     $page = $_GET['page'];
     $modelData = $controller->getModelByPage($page);
@@ -33,7 +32,7 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
     exit;
 }
 
-// Otherwise return all models (matches data.json structure exactly)
+// return all models
 $allModels = $controller->getAllModels();
 
 echo json_encode([

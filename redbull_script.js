@@ -20,7 +20,7 @@ function init() {
     camera = new THREE.PerspectiveCamera(60, 1, 0.001, 1000);
     camera.position.set(0.15, 0.12, 0.3);
 
-    // --- RENDERER ---
+    // RENDERER 
     const container = document.getElementById('threeContainer');
     renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -31,14 +31,14 @@ function init() {
     renderer.toneMappingExposure = 0.8;
     container.appendChild(renderer.domElement);
 
-    // --- ORBIT CONTROLS ---
+    // ORBIT CONTROLS 
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
     controls.target.set(0, 0.07, 0);
     controls.update();
 
-    // --- LIGHTING ---
+    // LIGHTING
     hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.8);
     scene.add(hemiLight);
 
@@ -47,7 +47,7 @@ function init() {
 
     lights = {};
 
-    // Studio spotlight (off by default — togglable)
+    // Studio spotlight 
     lights.spot = new THREE.SpotLight(0xfff8e7, 0);
     lights.spot.position.set(0.2, 0.5, 0.2);
     lights.spot.angle = Math.PI / 6;
@@ -74,7 +74,7 @@ function init() {
     rimLight.position.set(0, 0.2, -0.3);
     scene.add(rimLight);
 
-    // --- AUDIO ---
+    // AUDIO 
     const listener = new THREE.AudioListener();
     camera.add(listener);
 
@@ -97,13 +97,13 @@ function init() {
         console.warn('Could not load crush sound:', err);
     });
 
-    // --- LOAD MODEL ---
+    // LOAD MODEL 
     loadModel('assets/models/redbull_can.glb');
 
-    // --- WIRE BUTTONS ---
+    // WIRE BUTTONS 
     setupEventListeners();
 
-    // --- RESIZE ---
+    // RESIZE
     window.addEventListener('resize', onResize);
     onResize();
 

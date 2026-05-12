@@ -1,10 +1,5 @@
 <?php
-/* ============================================
-   DATABASE SETUP SCRIPT
-   Run this ONCE in your browser at:
-   http://localhost:8000/setup_database.php
-   It reads data.json and populates SQLite.
-   ============================================ */
+//  DATABASE SETUP SCRIPT
 
 require_once __DIR__ . '/application/model/model.php';
 

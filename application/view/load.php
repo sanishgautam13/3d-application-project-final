@@ -1,5 +1,5 @@
 <?php
-/* LOAD — view loader helper */
+// LOAD view 
 
 class Load
 {

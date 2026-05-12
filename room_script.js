@@ -35,20 +35,20 @@ function init() {
     controls.target.set(0, 2, 0);
     controls.update();
 
-    // Own controlled lighting, dimmer for more lamp impact
+    // controlled lighting
     lights = {};
 
-    // Ambient (hemisphere) light — togglable
+    // Ambient 
     ambientLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.6);
     scene.add(ambientLight);
     lights.hemi = ambientLight;
 
-    // Directional fill light (always on)
+    // Directional fill light 
     const dirLight = new THREE.DirectionalLight(0xffffff, 0.5);
     dirLight.position.set(8, 15, 8);
     scene.add(dirLight);
 
- // Studio light (off by default — focused spotlight from above)
+ // Studio light 
     studioLight = new THREE.SpotLight(0xfff8e7, 0);
     studioLight.position.set(10, 10, 10);
     studioLight.angle = Math.PI / 6;
@@ -59,7 +59,7 @@ function init() {
     scene.add(studioLight);
     scene.add(studioLight.target);
 
-    // --- AUDIO ---
+    // AUDIO 
     const listener = new THREE.AudioListener();
     camera.add(listener);
 
@@ -116,7 +116,7 @@ function loadModel(modelPath) {
         scene.add(model);
         loadedModel = model;
 
-        // Create OUR OWN lamp light - localised warm glow
+        // Create lamp light
         lampLight = new THREE.PointLight(0xffaa55, 0, 4, 3);
         if (floorLampPosition) {
             lampLight.position.set(floorLampPosition.x, floorLampPosition.y + 3, floorLampPosition.z);

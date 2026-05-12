@@ -1,6 +1,6 @@
-/* THE ASSIGNMENT SURVIVAL KIT - Main Stylesheet */
+/* Main Stylesheet */
 
-/* root variables - all the site colours in one place so I can re-skin everything by changing values here */
+/* root variables */
 :root {
     --bg-dark: #0f1419;
     --bg-card: #1a2128;
@@ -14,14 +14,14 @@
     --border-color: rgba(255,255,255,0.06);
 }
 
-/* universal reset - kill default margins/padding so everything starts from zero */
+/* universal reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* base body styles - dark background and Open Sans for everything that isn't a heading */
+/* base body styles */
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: var(--bg-dark);
@@ -30,7 +30,7 @@ body {
     line-height: 1.6;
 }
 
-/* all headings use Oswald and uppercase letters for that bold condensed look */
+/* all headings use Oswald and uppercase letters */
 h1, h2, h3, h4, h5 {
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
@@ -38,7 +38,7 @@ h1, h2, h3, h4, h5 {
 }
 
 /* NAVBAR */
-/* fixed at the top with a slight see-through dark background and blur for that frosted glass feel */
+
 .navbar {
     background: rgba(15, 20, 25, 0.95);
     backdrop-filter: blur(10px);
@@ -54,7 +54,7 @@ h1, h2, h3, h4, h5 {
     text-decoration: none;
 }
 
-/* the two-tone SURVIVAL/KIT logo colours */
+/* SURVIVAL/KIT logo colours */
 .brand-accent {
     color: var(--accent-sage);
 }
@@ -63,12 +63,12 @@ h1, h2, h3, h4, h5 {
     color: var(--text-light);
 }
 
-/* keep .brand-red as an alias so older pages still work */
+
 .brand-red {
     color: var(--accent-sage);
 }
 
-/* the small "The Assignment Edition" strapline below the logo */
+/* The Assignment Edition strapline below the logo */
 .brand-sub {
     font-size: 0.65rem;
     color: var(--text-muted);
@@ -87,7 +87,7 @@ h1, h2, h3, h4, h5 {
     transition: color 0.3s;
 }
 
-/* sage colour on hover and when the link is active so you can see where you are */
+/* sage colour on hover*/
 .nav-link:hover,
 .nav-link.active {
     color: var(--accent-sage) !important;
@@ -110,8 +110,7 @@ h1, h2, h3, h4, h5 {
 }
 
 /* HERO SECTION (index.html) */
-/* big top section on the home page with the title and intro text */
-/* the Red Bull image sits behind, blended dark so the text stays readable */
+
 .hero-section {
     position: relative;
     background:
@@ -142,7 +141,7 @@ h1, h2, h3, h4, h5 {
     margin-bottom: 1.5rem;
 }
 
-/* the smaller "The Assignment" line above the main title */
+/* The Assignment line above the main title */
 .title-line-1 {
     display: block;
     font-size: clamp(1.5rem, 3vw, 2.2rem);
@@ -151,7 +150,7 @@ h1, h2, h3, h4, h5 {
     font-weight: 400;
 }
 
-/* the big "Survival Kit" line - clamp() means it scales smoothly with screen size */
+/* Survival Kit line */
 .title-line-2 {
     display: block;
     font-size: clamp(2.5rem, 6vw, 4.5rem);
@@ -168,7 +167,6 @@ h1, h2, h3, h4, h5 {
 }
 
 /* PRODUCT CARDS SECTION */
-/* the three model cards on the home page */
 .products-section {
     padding: 60px 0 80px 0;
     background: var(--bg-dark);
@@ -202,14 +200,14 @@ h1, h2, h3, h4, h5 {
     overflow: hidden;
 }
 
-/* lifts up slightly with a sage glow when you hover over a card */
+/*  sage glow for hover over a card */
 .product-card:hover {
     transform: translateY(-6px);
     border-color: var(--accent-sage);
     box-shadow: 0 12px 30px rgba(148, 197, 164, 0.12);
 }
 
-/* image instead of icon - the box that holds each card's preview image */
+/* box that holds each card's preview image */
 .card-image {
     width: 100%;
     height: 180px;
@@ -229,7 +227,7 @@ h1, h2, h3, h4, h5 {
     transition: transform 0.4s ease;
 }
 
-/* slight zoom on the image when you hover the card */
+/* slight zoom on the image */
 .product-card:hover .card-image img {
     transform: scale(1.05);
 }
@@ -248,7 +246,7 @@ h1, h2, h3, h4, h5 {
     line-height: 1.6;
 }
 
-/* the "View 3D →" call-to-action at the bottom of each card */
+/* call-to-action at the bottom of each card */
 .card-cta {
     display: inline-block;
     margin-top: 1.2rem;
@@ -260,19 +258,19 @@ h1, h2, h3, h4, h5 {
     transition: transform 0.3s;
 }
 
-/* arrow nudges right on hover - small detail but feels nice */
+/* arrow nudges right on hover */
 .product-card:hover .card-cta {
     transform: translateX(5px);
 }
 
 /* 3D MODEL PAGE */
-/* the main wrapper for redbull.html, room.html and macbook.html */
+
 .model-page {
     padding-top: 70px;
     min-height: 100vh;
 }
 
-/* the big area where Three.js renders the 3D model - takes up most of the page */
+/* t Three.js renders the 3D model  */
 .three-viewport {
     width: 100%;
     height: calc(100vh - 70px);
@@ -291,7 +289,7 @@ h1, h2, h3, h4, h5 {
     z-index: 100;
 }
 
-/* the controls panel on the right side of each model page */
+/* the controls panel */
 .controls-panel {
     background: var(--bg-panel);
     height: calc(100vh - 70px);
@@ -313,7 +311,7 @@ h1, h2, h3, h4, h5 {
     margin-bottom: 1.5rem;
 }
 
-/* the "About this model" info card on each model page */
+/* About this model info card on each model page */
 .info-box {
     background: rgba(61, 79, 92, 0.25);
     border: 1px solid rgba(61, 79, 92, 0.4);
@@ -336,7 +334,7 @@ h1, h2, h3, h4, h5 {
     margin: 0;
 }
 
-/* each control section (Animation, View, Lighting, etc) is a controls-group */
+/* each control section */
 .controls-group {
     margin-bottom: 1.5rem;
     padding-bottom: 1.5rem;
@@ -386,18 +384,18 @@ h1, h2, h3, h4, h5 {
 }
 
 /* RESPONSIVE */
-/* below 992px (tablets and down) - stack the layout vertically and shrink things */
+
 @media (max-width: 991px) {
     .hero-section {
         padding: 160px 0 60px 0;
     }
 
-    /* viewport drops to half height so the controls panel fits below it */
+    /* viewport drops for controls panel */
     .three-viewport {
         height: 50vh;
     }
 
-    /* controls panel goes underneath the viewport instead of beside it */
+    /* controls panel underneath the viewport */
     .controls-panel {
         height: auto;
         border-left: none;
@@ -409,7 +407,7 @@ h1, h2, h3, h4, h5 {
     }
 }
 
-/* below 575px (phones) - one column for buttons and smaller titles */
+/* phones - one column for buttons and smaller titles */
 @media (max-width: 575px) {
     .btn-grid {
         grid-template-columns: 1fr;
@@ -461,12 +459,12 @@ h1, h2, h3, h4, h5 {
     border-bottom: 1px solid var(--border-color);
 }
 
-/* don't show a divider after the last section - looks neater */
+/* don't show a divider after the last section */
 .about-section:last-of-type {
     border-bottom: none;
 }
 
-/* section headings - flex layout so the icon sits next to the heading text */
+/* section headings */
 .about-section h2 {
     font-size: 1.6rem;
     color: var(--accent-sage);
@@ -496,7 +494,7 @@ h1, h2, h3, h4, h5 {
     margin-bottom: 1rem;
 }
 
-/* important bits in bold get the lighter colour to stand out */
+/* set bold get the lighter colour to stand out */
 .about-section p strong,
 .about-section li strong {
     color: var(--text-light);
@@ -513,7 +511,7 @@ h1, h2, h3, h4, h5 {
     font-family: monospace;
 }
 
-/* dashed underline on links so they're clearly clickable but not aggressive */
+/* dashed underline */
 .about-section a {
     color: var(--accent-sage);
     text-decoration: none;
@@ -525,7 +523,7 @@ h1, h2, h3, h4, h5 {
     color: var(--accent-sage-soft);
 }
 
-/* the styled bullet lists used throughout the about page */
+/* the styled bullet lists */
 .tech-list {
     list-style: none;
     padding: 0;
@@ -540,7 +538,7 @@ h1, h2, h3, h4, h5 {
     border-bottom: 1px solid rgba(255,255,255,0.03);
 }
 
-/* custom chevron bullet point in the sage colour */
+/*  chevron bullet point in the sage colour */
 .tech-list li::before {
     content: "›";
     position: absolute;
@@ -564,7 +562,7 @@ h1, h2, h3, h4, h5 {
     cursor: pointer;
 }
 
-/* clicking a screenshot makes it pop out 1.5x bigger */
+/* clicking a screenshot to pop out  */
 .testing-img.clicked {
     transform: scale(1.5);
     z-index: 100;
@@ -580,12 +578,12 @@ h1, h2, h3, h4, h5 {
     font-style: italic;
 }
 
-/* if a tech-list item starts with an icon, hide the default chevron so we don't get both */
+/* tech-list item starts with an icon, hide the default chevron */
 .tech-list li:has(> i:first-child)::before {
     content: none;
 }
 
-/* tighter left padding when icons are inline since we don't need room for the chevron */
+/* tighter left padding when icons are inline */
 .tech-list li:has(> i:first-child) {
     padding-left: 8px;
 }
@@ -599,7 +597,7 @@ h1, h2, h3, h4, h5 {
     font-size: 0.95em;
 }
 
-/* swatch icons in the colour palette section have their own colour set inline, leave it alone */
+/* swatch icons in the colour palette */
 .tech-list li > i[style*="color"] {
     color: inherit !important;
     font-size: 1.1em;
@@ -608,7 +606,7 @@ h1, h2, h3, h4, h5 {
     padding: 1px;
 }
 
-/* code blocks inside the about page - keep them readable */
+/* code blocks inside the about page */
 .about-section pre {
     margin: 1rem 0;
     line-height: 1.5;

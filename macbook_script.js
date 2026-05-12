@@ -226,7 +226,7 @@ function fadeScreenOn() {
 function fadeKeyboardOn() {
     if (keyboardKeys.length === 0) return;
 
-    // Soft cool-white glow — matches the screen tone
+    // Soft cool-white glow to matches the screen tone
     keyboardKeys.forEach(function (key) {
         key.material.emissive = new THREE.Color(0xc8d8ff);
     });

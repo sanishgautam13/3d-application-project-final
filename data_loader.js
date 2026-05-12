@@ -1,14 +1,14 @@
 // data_loader.js
-//Loads the model data and puts it on the page.
-//First tries the PHP/SQLite endpoint, falls back to data.json if PHP isn't running.
+//Loads the model data and puts it on the page
+//First tries the PHP/SQLite endpoint, falls back to data.json if PHP isn't running
 
 $(document).ready(function () {
 
-    // figure out which page we're on so we can show the right model info
+    // figure out which page we're on to  show the right model info
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     console.log('[Data Loader] Page detected:', currentPage);
 
-    // the two places we can get the data from
+    // the two places to get data from
     const phpEndpoint = 'api/get_models.php';   
     const jsonFallback = 'data.json';            
 
@@ -38,14 +38,14 @@ $(document).ready(function () {
         });
     });
 
-    // takes the data from either source and drops it into the right spots on the page
+    // takes the data from either source and drops on the page
     function injectContent(data, currentPage) {
         // find the model that matches whatever page we're on
         const model = data.models.find(function (m) {
             return m.page === currentPage;
         });
 
-        // only do this if we actually found one 
+        // do this if we actually found one 
         if (model) {
             console.log('[Data Loader] Loading content for:', model.fullTitle);
             $('[data-content="model-title"]').text(model.fullTitle);

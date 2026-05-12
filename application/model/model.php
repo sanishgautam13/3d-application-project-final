@@ -1,5 +1,5 @@
 <?php
-/* MODEL — handles all SQLite database operations Uses PDO */
+//handle all SQLite database operations
 
 class Model
 {

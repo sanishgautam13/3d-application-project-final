@@ -15,7 +15,7 @@
 </head>
 <body>
 
-    <!-- NAVBAR - About is the active page -->
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
@@ -45,13 +45,13 @@
     <main class="about-page">
         <div class="container">
 
-            <!-- page hero / intro -->
+            <!-- intro -->
             <header class="about-hero">
                 <h1 class="about-title">About the Project</h1>
                 <p class="about-lead">A behind-the-scenes look at <span class="brand-accent">The Assignment Survival Kit.</span> How I built it, the tools I used, and why I made the decisions I did.</p>
             </header>
 
-            <!-- CONCEPT -->
+            
             <section class="about-section">
                 <h2><i class="fas fa-lightbulb"></i> The Concept</h2>
                 <p>This is the project I built for the University of Sussex Introduction to Web 3D Applications module.</p>
@@ -184,7 +184,7 @@
                 </ul>
             </section>
 
-            <!-- WIREFRAME EVIDENCE - screenshots from Blender showing the underlying geometry -->
+            <!-- WIREFRAME EVIDENCE -->
             <section class="about-section">
                 <h2><i class="fas fa-drafting-compass"></i> Wireframe Evidence from Blender</h2>
                 <p>Wireframe screenshots from Blender showing the underlying geometry of each model.</p>
@@ -381,7 +381,7 @@
                 </ul>
             </section>
 
-            <!-- GOING BEYOND THE LABS - the deeper-understanding section -->
+            <!--  deeper-understanding section -->
             <section class="about-section">
                 <h2><i class="fas fa-rocket"></i> Going Beyond the Labs</h2>
 
@@ -439,7 +439,7 @@
                 </ul>
             </section>
 
-            <!-- EVIDENCE OF TESTING - testing screenshots organised by category -->
+            <!-- EVIDENCE OF TESTING -->
             <section class="about-section">
                 <h2><i class="fas fa-camera"></i> Evidence of Testing</h2>
                 <p>Screenshots from the testing process. Click any image to enlarge it.</p>
@@ -558,7 +558,7 @@
 
     <script src="js/bootstrap.bundle.js"></script>
     <script>
-        // image pop-out effect for testing screenshots - click any image to toggle the .clicked class
+        // image pop-out effect for testing screenshots 
         document.querySelectorAll('.testing-img').forEach(img => {
             img.addEventListener('click', function() {
                 this.classList.toggle('clicked');

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>MacBook - The Assignment Survival Kit</title>
 
-    <!-- Google Fonts - Open Sans for body text, Oswald for headings -->
+    <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 
@@ -19,7 +19,7 @@
 </head>
 <body>
 
-    <!-- NAVBAR - same on every page, MacBook is the active dropdown item here -->
+    <!-- NAVBAR  -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.html">
@@ -49,17 +49,17 @@
     </div>
     </nav>
 
-    <!-- MAIN MODEL PAGE - 3D viewport left, controls panel right -->
+    <!-- MAIN MODEL PAGE -->
     <main class="model-page">
         <div class="container-fluid">
             <div class="row">
 
-                <!-- 3D viewport - Three.js renders the MacBook scene here -->
+                <!-- 3D viewport -->
                 <div class="col-lg-8 p-0">
                     <div id="threeContainer" class="three-viewport"></div>
                 </div>
 
-                <!-- controls panel - dynamic content loads from data_loader.js -->
+                <!-- controls panel, dynamic content loads from data_loader.js -->
                 <div class="col-lg-4 controls-panel">
                     <h2 class="model-title" data-content="model-title">Loading...</h2>
                     <p class="model-description" data-content="model-description">Loading...</p>
@@ -69,7 +69,7 @@
                         <p data-content="model-technical">Loading...</p>
                     </div>
 
-                    <!-- Animation controls - the Open button kicks off the multi-stage open sequence -->
+                    <!-- Animation controls -->
                     <div class="controls-group">
                         <h4><i class="fas fa-play-circle"></i> Animation</h4>
                         <div class="btn-grid">
@@ -80,7 +80,7 @@
                         </div>
                     </div>
 
-                    <!-- View controls - wireframe toggle plus four camera angles -->
+                    <!-- View controls -->
                     <div class="controls-group">
                         <h4><i class="fas fa-eye"></i> View</h4>
                         <div class="btn-grid">
@@ -92,7 +92,7 @@
                         </div>
                     </div>
 
-                    <!-- Body Colour controls - swap between Silver and Space Grey at runtime -->
+                    <!-- Body Colour controls -->
                     <div class="controls-group">
                         <h4><i class="fas fa-palette"></i> Body Colour</h4>
                         <div class="btn-grid">
@@ -101,7 +101,7 @@
                         </div>
                     </div>
 
-                    <!-- Lighting controls - studio spotlight + ambient hemi light toggles -->
+                    <!-- Lighting controls -->
                     <div class="controls-group">
                         <h4><i class="fas fa-lightbulb"></i> Lighting</h4>
                         <div class="btn-grid">
@@ -124,13 +124,13 @@
     </div>
     </footer>
 
-    <!-- SCRIPTS - jQuery and Three.js libraries first, then my own scripts -->
+    <!-- SCRIPTS - jQuery and Three.js libraries -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/bootstrap.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-    <!-- my own scripts - data_loader handles AJAX, macbook_script handles the 3D scene and open sequence -->
+    <!-- data_loader handles AJAX, macbook_script handles the 3D scene and open sequence -->
     <script src="data_loader.js"></script>
     <script src="macbook_script.js"></script>
 </body>

@@ -2,7 +2,7 @@
 .DS_Store
 **/.DS_Store
 
-# SQLite database (marker will run setup_database.php to create their own)
+# SQLite database 
 database/models.db
 
 # Editor files
